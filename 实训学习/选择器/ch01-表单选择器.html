@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $('input').click(function() {
+                alert($('input').size());
+                alert($('input').val());
+                //alert($('input').eq(1).val());		//这种写法语义不清晰，
+                //alert($('input[type=password]').val());		//语义清晰一点，
+                //alert($('input[name=pass]').val());
+
+                //alert($('input').size());
+                //alert($(':input[name=city]').size());
+                //alert($(':text').size());
+                //alert($(':password[name=pass]').size());
+                //alert($(':radio').size());
+                //alert($(':radio[name=sex]').eq(1).val());
+                //alert($(':radio[name=sex]').last().val());
+
+                //alert($('form :hidden').size());
+                //alert($('form :enabled').size());
+                //alert($('form :disabled').size());
+                //alert($('form :checked').size());
+                //alert($('form :selected').get(0));
+                alert($('form :selected').val());
+            });
+        })
+    </script>
+</head>
+<body>
+    <input type="button" value="点击测试">
+
+    <form>
+        <input type="text" name="user" value="123" />
+        <input type="password" name="pass" value="456" />
+        <input type="radio" name="sex" value="男" checked="checked" />男
+        <input type="radio" name="sex" value="女" />女
+        <textarea></textarea>
+        <select name="city" multiple>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+        <button></button>
+    </form>
+
+</body>
+</html>

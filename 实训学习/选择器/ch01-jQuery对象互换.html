@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <script src="../jquery/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            $("input").click(function(){
+                //dom����ת��ΪJQuery����
+                    //��ȡdom����
+//                    var v_tid = document.getElementById("tid");
+//                    alert(v_tid.value);
+//                    //ת��Ϊjquery����
+//                    var $tid = $(v_tid);
+//                    alert($tid.val());
+
+                //JQuery����ת��Ϊdom����
+                    //��ȡjquery����
+                    var $tid = $("#tid");
+                    //ת��Ϊdom����
+                    var v_tid = $tid[0];
+                    //����
+                    var v_tid2 = $tid.get(0);
+                    alert(v_tid2.value);
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="text" value="zhangshan" id="tid"/>
+<input type="button" value="查看"/>
+</div>
+</body>
+</html>

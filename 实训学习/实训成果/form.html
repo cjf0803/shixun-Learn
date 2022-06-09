@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实训成果-cjf</title>
+    <style>
+        table {
+            width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        form {
+            width: 500px;
+            margin: 20px auto;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            display: flex;
+            /* border: 1px solid black; */
+
+        }
+
+        .cjf {
+            text-align: center;
+            margin: 0 auto;
+            padding: 50px 0 0 80px;
+            font-size: larger;
+            font-weight: 2500;
+            color: lightsalmon;
+        }
+
+        .cjf01 {
+            background-color: rgb(215, 248, 250);
+            width: 500px;
+            height: 200px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            padding: 20px;
+            display: none;
+
+
+        }
+
+        .cjf01.active {
+            display: block;
+        }
+
+        .cjf01>span {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+        }
+
+        input {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+    <div id="app">
+        <form action="">
+            <label for="">
+                商品名: <input type="text" v-model.trim="info.name">
+            </label>
+            <label for="">
+                商品单价: <input type="number" v-model.number="info.price">
+            </label>
+            <label for="">
+                数量: <input type="number" v-model.number="info.num">
+            </label>
+            <button type="button" @click="addfun()">商品添加</button>
+        </form>
+        <table border="2" cellspacing="3">
+            <thead>
+                <tr style="background-color:lightblue">
+                    <td>全选<input type="checkbox" v-model="checked" @change="changeAllChecked()" /></td>
+                    <td>商品id</td>
+                    <td>商品名</td>
+                    <td>商品单价</td>
+                    <td>购买数量</td>
+                    <td>操作</td>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in goods" :key="item.id">
+                    <td><input type="checkbox" v-model="checkedItem" :value="item.name"></td>
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>￥{{item.price}}</td>
+                    <td>{{item.num}}</td>
+                    <td>
+                        <button @click="showfun(item.id)">编辑</button>
+                        <button @click="delfun(item.id)">删除</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="cjf">总价：￥{{getTotal}} 元</div>
+        <div :class="{cjf01:true,active:isshow}">
+            <span @click="cha">×</span>
+            <form action="">
+                <label for="">
+                    商品id: <input type="text" v-model="dia.id">
+                </label>
+                <label for="">
+                    商品名: <input type="text" v-model.trim="dia.name">
+                </label>
+                <label for="">
+                    商品价格: <input type="number" v-model.number="dia.price">
+                </label>
+                <label for="">
+                    商品数量: <input type="number" v-model.number="dia.num">
+                </label>
+                <button @click="queren" type="button">确认编辑</button>
+            </form>
+
+        </div>
+    </div>
+    <script>
+        const goods = [{
+
+                id: 1,
+                name: 'aj1芝加哥球鞋',
+                price: 2999,
+                num: 3
+            },
+            {
+
+                id: 2,
+                name: '智能扫地机器人',
+                price: 3666,
+                num: 10
+            },
+            {
+
+                id: 3,
+                name: '斯伯丁篮球',
+                price: 555,
+                num: 5
+            },
+            {
+                id: 4,
+                name: 'NBA球衣',
+                price: 788,
+                num: 6
+            }
+
+        ]
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                goods: goods,
+                info: {},
+                dia: {},
+                isshow: false,
+                checked: false,
+                checkedItem: []
+            },
+            methods: {
+                //   表格的删除
+                delfun(id) {
+                    this.goods = this.goods.filter(item => item.id !== id)
+                    alert("恭喜你！删除成功")
+                },
+                // 表格的添加
+                addfun() {
+                    // 先给他添加一个id属性
+                    if (this.info.name && this.info.price && this.info.num) {
+                        this.info.id = this.goods[this.goods.length - 1].id + 1;
+                        this.goods.push(this.info)
+                        alert("恭喜你！添加成功")
+                    } else {
+                        alert("请输入添加内容")
+                    }
+
+                },
+                // 表格的修改
+                showfun(id) {
+                    const result = this.goods.find(item => item.id === id);
+                    this.dia = {
+                        ...result
+                    }
+
+                    // 当点击编辑按钮时讲所要提交的表单显示出来
+                    this.isshow = true
+                },
+
+
+                queren() {
+                    //也就是把update中的内容再重新赋值回到this.goods
+                    let result = this.goods.find(item => item.id === this.dia.id)
+                    result.name = this.dia.name
+                    result.price = this.dia.price
+                    result.num = this.dia.num
+                    this.isshow = false
+                    alert("恭喜你！修改成功")
+
+                },
+                //点击cha号时将要显示的东西隐藏起来
+
+                cha() {
+                    this.isshow = false
+                },
+                changeAllChecked: function () {
+                    // 判断全选复选框是否选中
+                    if (this.checked) {
+                        var listArr = [];
+                        for (var i = 0; i < this.goods.length; i++) {
+                            listArr.push(this.goods[i].name);
+                        }
+                        this.checkedItem = listArr;
+
+                    } else {
+                        // 如果全选复未选框被选中,则设置为空值,即未选中所有的选项复选框
+                        this.checkedItem = [];
+                    }
+                }
+            },
+            computed: {
+                //计算总金额
+                getTotal() {
+                    let total = 0;
+                    this.goods.map((item, index) => {
+                        total += item.price * item.num;
+                    })
+                    return total
+                }
+
+            },
+            watch: {
+                // 监听复选框项是否全部选中
+                checkedItem: function () {
+                    // 判断选中选项复选框的值数组的长度是否与设定的长度相等，如果相等则所有的选项复选框被选中，否则没有被选中。
+                    if (this.checkedItem.length == this.goods.length) {
+                        // 如果所有复选框项全部被选中,则全选复选框也被勾选
+                        this.checked = true;
+                    } else {
+                        // 否则复选框不勾选
+                        this.checked = false;
+                    }
+                }
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>

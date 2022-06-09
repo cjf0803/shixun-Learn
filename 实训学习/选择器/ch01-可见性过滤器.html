@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="../jquery/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $("input").click(function(){
+               // alert($('div:hidden').size());
+                $('div:hidden').css('background', '#ccc').show(1000);
+                //alert($('div:visible').size());
+            });
+        })
+    </script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <input type="button" value="点击测试"/>
+    <div style="display: none;">abc.com</div>
+    <div>11</div>
+    <div>22</div>
+    <div>33</div>
+</body>
+</html>
+

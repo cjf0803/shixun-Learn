@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            $("input").click(function(){
+
+                $('div').click(function () {
+                    alert('abc.com');
+                });
+                //$('div').clone(true).appendTo('body');//clone无参数则不把事件处理复制过来
+                //$('div').remove();
+                //$('div').remove('.box');
+
+                //alert($('div').remove().get(0));
+                //$('div').remove().appendTo('body');//删除在添加，则原有的事件行为无效
+                //$('div').detach().appendTo('body');//删除在添加，则保留原有事件行为
+                //$('div').empty();
+                //$('div').replaceWith('<span>DOM</span>');
+                $('<span>DOM</span>').replaceAll('div');
+            });
+
+        });
+    </script>
+</head>
+<body>
+<input type="button" value="点击测试"/>
+
+<div>div节点</div>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery3-6.js"></script>
+    <script>
+        $(function(){
+       
+         $('input').on('click', function () {
+         alert('弹窗！');
+         });
+
+ /*
+         $('input').bind('click', fn);
+
+         function fn() {
+         alert('处理函数！')
+         }
+
+
+         $('input').bind('click mouseover', function () {
+         alert('弹窗！');
+         });
+
+
+         $('input').bind('mouseover mouseout', function () {
+         $('div').html(function (index, value) {
+         return value + '1';
+         });
+         });
+
+
+         $('input').bind({
+         mouseover : function () {
+         alert('移入');
+         },
+         mouseout : function () {
+         alert('移出');
+         }
+         });
+
+
+         $('input').bind({
+         'mouseover' : function () {
+         alert('移入');
+         },
+         'mouseout' : function () {
+         alert('移出');
+         }
+         });
+
+
+         $('input').bind('click mouseover', function () {
+         alert('弹窗！');
+         });
+
+
+         $('input').bind('click', fn1);
+         $('input').bind('click', fn2);
+
+         function fn1() {
+         alert('fn1');
+         }
+
+         function fn2() {
+         alert('fn2');
+         }
+
+         //$('input').unbind();		//删除全部事件
+         //$('input').unbind('click');	//只删除click事件
+         $('input').unbind('click', fn2);  //删除click事件绑定了fn2的
+ */
+         });
+    </script>
+</head>
+<body>
+
+<form>
+    <input type="submit" value="按钮" />
+</form>
+
+</body>
+</html>

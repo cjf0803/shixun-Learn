@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            $("input").click(function(){
+                //alert(typeof parseInt($('div').css('width')));
+                //alert(typeof $('div').width());
+                //alert($('div').width());
+                //alert($(window).width());
+                //alert($(document).width());
+                //$('div').width(500);
+                //$('div').width('500px');
+                //$('div').width('500pt');
+                //$('div').width(function (index, width) {
+                //	return width - 500 + 'px';				//虽然可以不加，会智能添加，但还是建议加上单位，更加清晰。
+                //});
+                //alert($('div').height());
+                //padding, border, margin
+                //alert($('div').width());				//200        200       200
+                //alert($('div').innerWidth());			//400(左右)        400       400
+                //alert($('div').outerWidth());			//400(左右)        600       600
+                //alert($('div').outerWidth(true));	    //400(左右)        600       800
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="button" value="点击测试"/>
+<div title="t1" style="width: 200px;padding: 100px;border: 100px solid aqua;margin: 100px">
+    <strong>www.abc.com</strong>
+</div>
+</body>
+</html>

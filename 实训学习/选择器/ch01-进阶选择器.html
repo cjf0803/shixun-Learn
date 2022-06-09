@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="../jquery/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $('input').click(function() {
+                // $("#box").css('backgroundColor','#ccffaa');//next选择器
+                // $("#box p").css('color', 'red');//后代择器
+                // $("#box").find('p').css('color', 'red');//后代择器
+                 $("#box p").eq(1).css('color','blue');
+                // $("#box > p").css('color', 'green');//子选择器
+                // $("#box").children("p").css('color', 'green');//子选择器
+                //$("#box + p").css('color','yellow');//next选择器
+                 $("#box").next('p').css('color','yellow');//next选择器
+                 $("#box ~ p").css('color','yellow'); //nextall选择器
+                 $("#box").nextAll('p').css('color','yellow'); //nextall选择器
+                // //$("#box").nextAll('*').css('color','yellow'); //如果*通配的比较多，则影响性能
+                // $("#box").prev().css('color','#2233dd')//同级上面一个元素
+                // $("#box").prevAll().css('color','#2233dd')//同级上面所有元素
+                // $("#box").siblings();//同级上下所有元素
+            //});
+        })
+    })
+    </script>
+</head>
+<body>
+    <input type="button" value="点击测试">
+    <p>prev prev</p>
+    <p>prev prev</p>
+    <div id="box">
+        <p>ppp111</p>
+        <p>ppp111</p>
+        <p>ppp111</p>
+        <div>
+            <p>ppp222</p>
+            <p>ppp222</p>
+            <p>ppp222</p>
+        </div>
+    </div>
+    <p>next next next</p>
+    <strong>strong</strong>
+    <p>next next next</p>
+    <p>next next next</p>
+</body>
+</html>

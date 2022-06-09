@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="../CH01/jquery/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+           $('input').click(function() {
+                alert($("div").size());//3个
+                alert($("#box").size());//1个
+                alert($(".box").size());//2个
+                alert($("div").length);//属性
+                $("#box").css('backgroundColor','green');
+            });
+        })
+    </script>
+    <style>
+        .box{
+            background: red;
+        }
+        .box > p {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="点击测试">
+    <div id="box">
+        <p>ppp111</p>
+    </div>
+    <div class="box">
+        <p>ppp222</p>
+    </div>
+    <div class="box">
+        <p>ppp222</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            $("#ceshi").click(function(){
+                //alert($('div').css('color'));
+                //$('div').css('color', 'red');
+//                 var box = $('div').css(['color', 'width', 'height']);//返回对象数组
+// //                for (var i in box) {  //遍历对象数组
+// //                    alert(i + ':' + box[i]);
+// //                }
+//                 $.each(box, function (attr, value) { //遍历对象数组
+//                     alert(attr + ':' + value);
+//                 });
+                var input1= $(".name");
+                $.each(input1,function(index,eleme){// index 数组中的位置，eleme  循环的值
+                    console.log((index+1)+eleme.type);
+                })
+
+            
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="button" value="点击测试" id="ceshi"/>
+<input type="text" name="name123123" class="name">
+<input type="text" name="name123123"class="name" >
+<div title="t1" class="green">
+    <strong>www.abc.com</strong>
+</div>
+<div title="t1">
+    <strong>www.abc.com</strong>
+</div>
+</body>
+</html>

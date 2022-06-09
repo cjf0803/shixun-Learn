@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="../jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            $("input").click(function(){
+                //内容过滤器
+                //$('div:contains("abc.com")').css('background', '#ccc');
+                //$('div:empty').css('background', '#ccc').css('height','20px');
+                //$('ul:has(.red)').css('background', '#ccc');
+                //$('div:parent').css('background', '#ccc');
+                //$('ul').has('.red').css('background', '#ccc');
+                //alert($('li').parent().size());//返回父元素的个数
+                //alert($('li').parent().get(0));//获取其中一个
+                //$('li').parent().css('background', '#ccc');
+                $('li').parents().css('background', '#ccc');
+                //$('li').parentsUntil('body').css('background', '#ccc');//遇到body，body及它的父节点都不加样式
+            });
+        })
+    </script>
+</head>
+<body>
+    <div>内容过滤器：abc.com</div>
+    <div>内容过滤器：ccc.com</div>
+    <div></div>
+    <input type="button" value="点击测试"/>
+    <ul>
+        <li>列表1</li>
+        <li>列表2</li>
+        <li class="red">列表3</li>
+        <li>列表4</li>
+        <li>列表5</li>
+        <li>列表6</li>
+    </ul>
+    <ul>
+        <li>列表1</li>
+        <li>列表2</li>
+        <li>列表3</li>
+        <li>列表4</li>
+        <li>列表5</li>
+        <li>列表6</li>
+    </ul>
+</body>
+</html>
+

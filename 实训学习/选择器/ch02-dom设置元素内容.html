@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            $("input").click(function(){
+//                alert($('#box').html());
+//                alert($('#box').text());			//text获取的是文本，有html会自动被清理
+//                $('#box').html('<em>www.ttt.cc</em>');		//替换HTML内容，会HTML会自动解析
+//                $('#box').text('<em>www.ttt.cc</em>');		//替换文本内容，有HTML会自动转义
+                alert($('input').val());
+                $('input').val('set text');
+                alert($('input').val());
+                $('input').val('女');
+                $('input').val(['男', '女', '编程']);
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="button" value="点击测试"/>
+<div id="box">
+    <strong>www.abc.com</strong>
+</div>
+
+<input type="text" value="abc text" />
+<input type="radio" value="男" /> 男
+<input type="radio" value="女" /> 女
+</body>
+</html>

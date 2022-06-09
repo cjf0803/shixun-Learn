@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("input").click(function(){
+                $('li:first').css('background', '#ccc');//第一个元素
+                //$('li:last).css('background', '#ccc');//最后一个元素
+               // $('li:not(.red)).css('background', '#ccc');//非 class为 red的元素
+                $('li:even').css('background', '#ccc');//索引为偶数的元素
+                //$('li:odd).css('background', '#ccc');
+                //索引为奇数的元素
+               // $('li:eq(2)).css('background', '#ccc');//指定索引值的元素
+                //$('li:gt(2)').css('background', '#ccc');//大于索引值的元素
+               // $('li:lt(2)').css('background', '#ccc');//小于索引值的元素
+                //$(':header').css('background', '#ccc');//页面所有 h1 ~ h6元素
+                //$('ul:first li:last').css('background', '#ccc');
+                //$('input').get(0).focus()
+                //$(':focus').css('background', 'red')
+
+                //jQuery为最常用的过滤器提供了专用的方法，已达到提升性能和效率的作用：
+                //$('li').first().css('background', '#ccc');
+                //$('li').last().css('background', '#ccc');
+                //$('li').not('.red').css('background', '#ccc');
+                //$('li').eq(2).css('background', '#ccc');
+
+                //alert($('li').parent().size());
+                //alert($('li').parent().get(0));
+                //$('li').parent().css('background', '#ccc');
+                //$('li').parents().css('background', '#ccc');
+                //$('li').parentsUntil('body').css('background', '#ccc');
+
+                //alert($('div:hidden').size());
+                //$('div:hidden').css('background', '#ccc').show(1000);
+                //alert($('div:visible').size());
+            });
+        })
+    </script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <input type="button" value="点击测试"/>
+    <ul>
+        <li>列表1</li>
+        <li>列表2</li>
+        <li class="red">列表3</li>
+        <li>列表4</li>
+        <li>列表5</li>
+        <li>列表6</li>
+    </ul>
+    <ul>
+        <li>列表1</li>
+        <li>列表2</li>
+        <li>列表3</li>
+        <li>列表4</li>
+        <li>列表5</li>
+        <li>列表6</li>
+    </ul>
+    <input type="text" />
+    <h3>我是标题</h3>
+
+</body>
+</html>
+

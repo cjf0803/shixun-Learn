@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            $("input").click(function(){
+                //$('div').addClass('red');
+                //$('div').addClass('red bg size');
+                //$('div').removeClass('bg');
+                //$('div').removeClass('red size');
+            });
+        });
+    </script>
+    <style>
+        .red {
+            color:red;
+        }
+        .green {
+            color:green;
+        }
+        .bg {
+            background-color:#ccc;
+        }
+        .size {
+            font-size:20px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="点击测试"/>
+<div title="t1" class="green">
+    <strong>www.abc.com</strong>
+</div>
+<div title="t1">
+    <strong>www.abc.com</strong>
+</div>
+</body>
+</html>

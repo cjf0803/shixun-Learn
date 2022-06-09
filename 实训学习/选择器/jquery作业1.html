@@ -1,0 +1,53 @@
+<html>
+<head>
+	<script src="../jquery/jquery-3.4.1.min.js"></script>
+	<script>
+		$(function(){
+			//1
+			$("p").click(function(){
+				//$("p").css("background","blue");
+				//console.log($("p").html);
+				alert($(this).html())
+			})
+
+			//2
+			$("tr").click(function(){
+				$("tr:nth-child(odd)").css("background","blue");
+			})
+
+			//3
+			$(":button").click(function(){
+				//复选框 被选中
+				alert($(":checked:checkbox").length);
+
+			})
+
+		})
+	</script>
+</script>
+</head>
+<body>
+	
+<form>
+	<p>1</p>
+	<p>2</p>
+	<p>3</p>
+	<table>
+		<tr><td>123</td><td>321</td></tr>
+		<tr><td>123</td><td>321</td></tr>
+		<tr><td>123</td><td>321</td></tr>
+		<tr><td>123</td><td>321</td></tr>
+		<tr><td>123</td><td>321</td></tr>		
+	</table>
+	<input type="checkbox" name="name" value="123">篮球
+	<input type="checkbox" name="name" value="123">足球
+	<input type="checkbox" name="name" value="123">羽毛球
+	<input type="checkbox" name="name" value="123">保龄球
+	<input type="checkbox" name="name" value="123">班长
+	
+	<input type="button" value="统计">
+</form>
+
+</body>
+
+</html>
