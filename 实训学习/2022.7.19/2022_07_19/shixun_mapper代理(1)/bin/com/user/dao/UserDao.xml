@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.user.dao.UserDao">
+     <!-- 
+          mapper代理机制的原则:
+          1.namespace的值要绑定接口的路径名
+          2.statement中的id要绑定接口的方法名
+          3.statement中parameterType参数类型要和接口中方法的参数类型一致
+          4.statement中的resultType要和接口中的返回值类型一致
+                      保证4点原则：目的是生成接口UserDao的代理对象
+      -->
+
+    <select id="findUser" resultType="com.user.entity.User" >
+         select * from user1
+    </select>
+    
+    <select id="findZu" resultType="com.user.entity.User" >
+        select * from user1
+        <where>
+            <if test="id!=0">
+               and id=#{id}
+            </if>
+            <if test="uname!=null and uname!=''">
+               and uname=#{uname}
+            </if>
+        </where>
+    </select>
+    
+    <!-- list循环in集合 -->
+    <select id="findList" resultType="com.user.entity.User">
+        select * from user1 where id in
+        <foreach collection="list" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+    
+    <!-- 循环数组 -->
+    <select id="findArray" resultType="com.user.entity.User">
+        select * from user1 where id in
+        <foreach collection="array" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+    
+    <!-- map传参 -->
+    <select id="findMap" resultType="com.user.entity.User">
+        select * from user1 where uname like '%${uname}%'
+        or id in
+        <foreach collection="ids" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+    
+    
+    <!-- sql片段 -->
+    <sql id="query_id_uname">
+        <if test="id!=0">
+          and id=#{id}
+        </if>
+        
+        <if test="uname!=null and uname!=''">
+           and uname like '%${uname}%'
+        </if>
+    </sql>
+    
+    <select id="findQuery" resultType="com.user.entity.User">
+        select * from user1
+        <where>
+            <include refid="query_id_uname"/>
+        </where>
+    </select>
+</mapper>

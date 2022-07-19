@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="user">
+    <!-- 查询用户信息 -->
+    <select id="findUser" resultType="com.user.entity.User">
+       select * from user1
+    </select>
+    <!-- 根据id查询数据 -->
+    <select id="findById" resultType="com.user.entity.User">
+        select * from user1 where id=#{id}
+    </select>
+    <!-- 只有当查询的时候使用属性resultType.增删改的时候使用 parameterType-->
+    <!-- 根据id删除数据 -->
+    <delete id="delUser" parameterType="int">
+       delete from user1 where id=#{value}
+    </delete>
+    
+    <!-- 添加数据 -->
+    <insert id="addUser" parameterType="com.user.entity.User">
+       insert into user1(id,uname,upwd,type)
+       values(#{id},#{uname},#{upwd},#{type})
+    </insert>
+    
+    <!-- 修改数据 -->
+    <update id="updateUser" parameterType="com.user.entity.User">
+        update user1 set uname=#{uname},upwd=#{upwd},type=#{type}
+        where id=#{id}
+    </update>
+</mapper>
+	
