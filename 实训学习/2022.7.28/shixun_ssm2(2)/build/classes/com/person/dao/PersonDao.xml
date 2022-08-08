@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.person.dao.PersonDao">
+    <select id="findPerson" resultType="com.person.entity.Person">
+         <![CDATA[
+             select b.* from  
+              (select p.*,rownum r from person p) b
+             where r>(#{index}-1)*#{size} and r<=#{index}*#{size} 
+         ]]>
+    </select>
+    
+    <!-- 查询总记录数 -->
+    <select id="countPerson" resultType="int">
+       select count(1) from person
+    </select>
+    
+    <delete id="delPerson" parameterType="com.person.entity.Person">
+        delete from person where id=#{id}
+    </delete>
+</mapper>
