@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/js/jquery-1.8.3.js"></script>
+    <script type="text/javascript">
+        //登录的函数
+        function login(){
+            //获取输入框的用户名:
+            var uname=$("#uname").val();
+            var upwd=$("#upwd").val();
+            $.ajax({
+                url:'user/login',
+                data:'uname='+uname+'&upwd='+upwd,
+                dataType:'json',
+                type:'post',
+                success:function(result){
+                    if(result!=null){
+                        if(result.type=="1"){
+                            //进入管理员
+                            /* location.href="/shixun_ssm2/index.jsp"; */
+                            location.href="/user/findUser";
+                        }if(result.type=="2"){
+                            //进入普通用户
+                            location.href="welcome.html";
+                        }
+                    }else{
+                        alert("密码错误，请重新登陆！")
+                        window.location.reload();
+                    }
+                }
+
+            });
+        }
+        // //注册的函数
+        // function regist() {
+        //     location.href="/shixun_Library_03/regist.jsp";
+        // }
+    </script>
+</head>
+<body>
+<form method="post">
+    <p>用户名：<input type="text" name="uname" id="uname"></p>
+    <p>密码：<input type="text" name="upwd" id="upwd"></p>
+    <p><input type="button" value="登陆" onclick="login()" style="float:left;margin-right:15px"></p>
+<!--    <p><input type='button' id="registBtn" value='去注册' onclick="regist()"></p>-->
+</form>
+
+</body>
+</html>
